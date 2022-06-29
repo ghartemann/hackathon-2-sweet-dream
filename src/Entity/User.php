@@ -48,9 +48,13 @@ class User
     #[ORM\Column(type: 'boolean')]
     private $organizer;
 
+    #[ORM\ManyToMany(targetEntity: Interest::class, mappedBy: 'user')]
+    private $interests;
+
     public function __construct()
     {
         $this->projects = new ArrayCollection();
+        $this->interests = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -201,6 +205,33 @@ class User
     public function setOrganizer(bool $organizer): self
     {
         $this->organizer = $organizer;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Interest>
+     */
+    public function getInterests(): Collection
+    {
+        return $this->interests;
+    }
+
+    public function addInterest(Interest $interest): self
+    {
+        if (!$this->interests->contains($interest)) {
+            $this->interests[] = $interest;
+            $interest->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInterest(Interest $interest): self
+    {
+        if ($this->interests->removeElement($interest)) {
+            $interest->removeUser($this);
+        }
 
         return $this;
     }
