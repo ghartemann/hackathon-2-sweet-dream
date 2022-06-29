@@ -48,7 +48,8 @@ class UserFixtures extends Fixture
                     'Nice - Sophia Antipolis',
                     'Bordeaux',
                     'Tours',
-                ]));
+                ]
+            ));
             $user->setSkills($faker->sentence());
             $user->setPosition($faker->jobTitle());
 
