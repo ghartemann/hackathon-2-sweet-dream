@@ -11,9 +11,9 @@ class CardController extends AbstractController
     #[Route('/card', name: 'app_card')]
     public function index(): Response
     {
-        $project = new ;
+
         return $this->render('card/index.html.twig', [
-            'project' => $project,
+
         ]);
     }
 }

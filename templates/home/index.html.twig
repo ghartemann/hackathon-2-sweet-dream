@@ -6,10 +6,11 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-10">
+                {% for project in projects %}
                 <div class="card fixed-bottom mb-5">
                     <img src="https://placeimg.com/1080/920/people" class="card-img-top img-fluid" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title">{{ project.title }}</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the
                             card's content.</p>
@@ -19,6 +20,7 @@
                         <button id="love"><i class="fa-circle-heart"></i></button>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
