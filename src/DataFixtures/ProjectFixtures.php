@@ -11,22 +11,14 @@ class ProjectFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
-
-        $faker = Factory::create('fr_FR');
+        $faker = Factory::create();
+        for ($i = 0; $i < 10; $i++) 
+        {
         $project = new Project();
-        $project->setTitle($faker->sentence(5));
-        $project->setTopic($faker->sentence(10));
-        $project->setAgency($faker->city());
-        $project->setTechno($faker->randomElement(
-            ['PHP', 'Javascript', 'API', 'React', 'Symfony',
-            'Laravel', 'Flutter', 'C++']
-        ));
-        $project->setDescription($faker->paragraphs(3, true));
-        $project->setMeeting($faker->sentence(1));
 
+        $manager->persist($project);
+
+        }
         $manager->flush();
     }
 }

@@ -39,21 +39,17 @@ class User
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $position;
 
-    #[ORM\ManyToMany(targetEntity: Project::class, mappedBy: 'users')]
-    private $projects;
-
     #[ORM\Column(type: 'boolean')]
     private $participant;
 
     #[ORM\Column(type: 'boolean')]
     private $organizer;
 
-    #[ORM\ManyToMany(targetEntity: Interest::class, mappedBy: 'user')]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Interest::class)]
     private $interests;
 
     public function __construct()
     {
-        $this->projects = new ArrayCollection();
         $this->interests = new ArrayCollection();
     }
 
@@ -158,33 +154,6 @@ class User
         return $this;
     }
 
-    /**
-     * @return Collection<int, Project>
-     */
-    public function getProjects(): Collection
-    {
-        return $this->projects;
-    }
-
-    public function addProject(Project $project): self
-    {
-        if (!$this->projects->contains($project)) {
-            $this->projects[] = $project;
-            $project->addUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProject(Project $project): self
-    {
-        if ($this->projects->removeElement($project)) {
-            $project->removeUser($this);
-        }
-
-        return $this;
-    }
-
     public function isParticipant(): ?bool
     {
         return $this->participant;
@@ -221,7 +190,7 @@ class User
     {
         if (!$this->interests->contains($interest)) {
             $this->interests[] = $interest;
-            $interest->addUser($this);
+            $interest->setUser($this);
         }
 
         return $this;
@@ -230,7 +199,10 @@ class User
     public function removeInterest(Interest $interest): self
     {
         if ($this->interests->removeElement($interest)) {
-            $interest->removeUser($this);
+            // set the owning side to null (unless already changed)
+            if ($interest->getUser() === $this) {
+                $interest->setUser(null);
+            }
         }
 
         return $this;

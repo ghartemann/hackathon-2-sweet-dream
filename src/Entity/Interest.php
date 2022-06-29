@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\InterestRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: InterestRepository::class)]
@@ -15,42 +13,28 @@ class Interest
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'interests')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'interests')]
     private $user;
 
-    #[ORM\OneToOne(inversedBy: 'interest', targetEntity: Project::class, cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'interests')]
     private $project;
 
-    public function __construct()
-    {
-        $this->user = new ArrayCollection();
-    }
+    #[ORM\Column(type: 'boolean', nullable: true)]
+    private $likeStatus;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return Collection<int, User>
-     */
-    public function getUser(): Collection
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function addUser(User $user): self
+    public function setUser(?User $user): self
     {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        $this->user->removeElement($user);
+        $this->user = $user;
 
         return $this;
     }
@@ -63,6 +47,18 @@ class Interest
     public function setProject(?Project $project): self
     {
         $this->project = $project;
+
+        return $this;
+    }
+
+    public function isLikeStatus(): ?bool
+    {
+        return $this->likeStatus;
+    }
+
+    public function setLikeStatus(?bool $likeStatus): self
+    {
+        $this->likeStatus = $likeStatus;
 
         return $this;
     }
