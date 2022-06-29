@@ -14,7 +14,7 @@ class UserFixtures extends Fixture
     {
         $faker = Factory::create('FR_fr');
 
-        for ($i = 0; $i < 50; $i++) 
+        for ($i = 0; $i < 100; $i++) 
         {
         $user = new User();
 
@@ -24,7 +24,7 @@ class UserFixtures extends Fixture
         $user->setEmail($faker->email());
         $user->setPassword($faker->password());
         $user->setAgency($faker->city());
-        $user->setSkills($faker->sentence(false));
+        $user->setSkills($faker->sentence());
         $user->setPosition($faker->jobTitle());
 
         $user->setParticipant($faker->boolean());
