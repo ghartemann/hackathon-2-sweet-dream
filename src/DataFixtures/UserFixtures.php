@@ -23,8 +23,11 @@ class UserFixtures extends Fixture
         $user->setPhone($faker->phoneNumber());
         $user->setEmail($faker->email());
         $user->setPassword($faker->password());
-        $user->setAgency($faker->city());
-        $user->setSkills($faker->sentence(false));
+        $user->setAgency($faker->randomElement(
+            [
+                'Nantes', 'Lyon', 'Le Mans', 'Aveiro', 'Niort', 'Dijon', 'Montpellier', 'Clermont-Ferrand', 'Lille', 'Vernon', 'Rennes', 'Genève', 'Toulouse', 'Munich', 'Canada', 'Aix-en-Provence', 'Orléans', 'Brest', 'Bruxelles', 'Casalblanca', 'Strasbourg', 'Nice - Sophia Antipolis', 'Bordeaux', 'Tours'
+            ]));
+        $user->setSkills($faker->sentence());
         $user->setPosition($faker->jobTitle());
 
         $user->setParticipant($faker->boolean());
