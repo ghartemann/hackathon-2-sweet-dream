@@ -33,12 +33,12 @@ class Project
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $meeting;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'projects')]
-    private $users;
+    #[ORM\OneToMany(mappedBy: 'project', targetEntity: Interest::class)]
+    private $interests;
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
+        $this->interests = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -119,25 +119,31 @@ class Project
     }
 
     /**
-     * @return Collection<int, User>
+     * @return Collection<int, Interest>
      */
-    public function getUsers(): Collection
+    public function getInterests(): Collection
     {
-        return $this->users;
+        return $this->interests;
     }
 
-    public function addUser(User $user): self
+    public function addInterest(Interest $interest): self
     {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
+        if (!$this->interests->contains($interest)) {
+            $this->interests[] = $interest;
+            $interest->setProject($this);
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeInterest(Interest $interest): self
     {
-        $this->users->removeElement($user);
+        if ($this->interests->removeElement($interest)) {
+            // set the owning side to null (unless already changed)
+            if ($interest->getProject() === $this) {
+                $interest->setProject(null);
+            }
+        }
 
         return $this;
     }
