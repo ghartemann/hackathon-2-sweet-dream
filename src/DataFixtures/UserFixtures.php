@@ -12,7 +12,7 @@ class UserFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $faker = Factory::create('fr_FR');
+        $faker = Factory::create('FR_fr');
 
         for ($i = 0; $i < 50; $i++) 
         {
@@ -20,7 +20,7 @@ class UserFixtures extends Fixture
 
         $user->setFirstname($faker->firstName());
         $user->setLastName($faker->lastName());
-        $user->setPhone($faker->mobileNumber());
+        $user->setPhone($faker->phoneNumber());
         $user->setEmail($faker->email());
         $user->setPassword($faker->password());
         $user->setAgency($faker->city());
