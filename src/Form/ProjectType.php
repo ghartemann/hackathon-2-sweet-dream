@@ -3,8 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Project;
+use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -19,8 +22,7 @@ class ProjectType extends AbstractType
             ->add('techno', TextType::class, ['label' => 'Techno'])
             ->add('description', TextType::class, ['label' => 'Description'])
             ->add('meeting', TextType::class, ['label' => 'Réunion à venir'])
-            //->add('users')
-            //->add('interest')
+            //->add('interests')
         ;
     }
 
