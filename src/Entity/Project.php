@@ -33,6 +33,14 @@ class Project
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $meeting;
 
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'projects')]
+    private $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +114,30 @@ class Project
     public function setMeeting(?string $meeting): self
     {
         $this->meeting = $meeting;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        $this->users->removeElement($user);
 
         return $this;
     }
