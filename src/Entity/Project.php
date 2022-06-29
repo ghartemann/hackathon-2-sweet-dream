@@ -36,6 +36,9 @@ class Project
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'projects')]
     private $users;
 
+    #[ORM\OneToOne(mappedBy: 'project', targetEntity: Interest::class, cascade: ['persist', 'remove'])]
+    private $interest;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -138,6 +141,28 @@ class Project
     public function removeUser(User $user): self
     {
         $this->users->removeElement($user);
+
+        return $this;
+    }
+
+    public function getInterest(): ?Interest
+    {
+        return $this->interest;
+    }
+
+    public function setInterest(?Interest $interest): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($interest === null && $this->interest !== null) {
+            $this->interest->setProject(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($interest !== null && $interest->getProject() !== $this) {
+            $interest->setProject($this);
+        }
+
+        $this->interest = $interest;
 
         return $this;
     }
