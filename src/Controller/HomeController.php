@@ -15,4 +15,12 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    #[Route('/likes', name: 'app_likes')]
+    public function showLikes(): Response
+    {
+        return $this->render('home/likes.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
 }
