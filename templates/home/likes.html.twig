@@ -15,38 +15,43 @@
             <div class="col-12 d-flex flex-column align-items-center gap-4">
 
                 {% for project in projects %}
-                    <a href="{{ path('app_project_show', {'id': project.id}) }}"
-                       class="card-like animate__animated animate__fadeInRight">
-                        <div class="card shadow" style="max-width: 700px;">
-                            <div class="row g-0">
-                                <div class="col-md-4">
-                                    <img src="{{ asset(project.picture) }}"
+
+                    <div class="card card-like animate__animated animate__fadeInRight shadow" style="max-width: 700px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <a href="{{ path('app_project_show', {'id': project.project.id}) }}">
+                                    <img src="{{ asset(project.project.picture) }}"
                                          class="img-fluid rounded-start card-like-pic" alt="...">
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ project.title }}</h5>
-                                        <p class="card-text">
-                                            <small class="text-muted">{{ project.agency }}</small>
-                                        </p>
-                                        <p class="card-text">Field: {{ project.topic }}</p>
-                                        <p class="card-text">{{ project.description }}</p>
-                                        <p class="card-text">
-                                            <small class="text-muted">
-                                                {% for techno in project.techno %}
-                                                    #{{ techno }}
-                                                {% endfor %}
-                                            </small>
-                                        </p>
-                                        {% if project.meeting %}
-                                            <p class="card-text">Meeting scheduled: {{ project.meeting }}</p>
-                                        {% else %}
-                                            <p class="card-text">Meeting: TBD!</p>
-                                        {% endif %}
-                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <a class="delete-like-show"
+                                       href="{{ path('app_home_dislike_project_from_like', {'id': project.id}) }}">×</a>
+                                    <a href="{{ path('app_project_show', {'id': project.project.id}) }}">
+                                        <h5 class="card-title">{{ project.project.title }}</h5>
+                                    </a>
+                                    <p class="card-text">
+                                        <small class="text-muted">{{ project.project.agency }}</small>
+                                    </p>
+                                    <p class="card-text">Field: {{ project.project.topic }}</p>
+                                    <p class="card-text">{{ project.project.description }}</p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            {% for techno in project.project.techno %}
+                                                #{{ techno }}
+                                            {% endfor %}
+                                        </small>
+                                    </p>
+                                    {% if project.project.meeting %}
+                                        <p class="card-text">Meeting scheduled: {{ project.project.meeting }}</p>
+                                    {% else %}
+                                        <p class="card-text">Meeting: TBD!</p>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </a>
                 {% else %}
                     <p class="text-white">Nothing to display.</p>
@@ -55,20 +60,20 @@
             </div>
         </div>
 
-        {# completely useless but looks nice doesn't it #}
-        <nav class='mt-5' aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link"><</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">></a>
-                </li>
-            </ul>
-        </nav>
+        {#        #}{# completely useless but looks nice doesn't it #}
+        {#        <nav class='mt-5' aria-label="Page navigation example"> #}
+        {#            <ul class="pagination justify-content-center"> #}
+        {#                <li class="page-item disabled"> #}
+        {#                    <a class="page-link"><</a> #}
+        {#                </li> #}
+        {#                <li class="page-item"><a class="page-link" href="#">1</a></li> #}
+        {#                <li class="page-item"><a class="page-link" href="#">2</a></li> #}
+        {#                <li class="page-item"><a class="page-link" href="#">3</a></li> #}
+        {#                <li class="page-item"> #}
+        {#                    <a class="page-link" href="#">></a> #}
+        {#                </li> #}
+        {#            </ul> #}
+        {#        </nav> #}
 
     </div>
 {% endblock %}

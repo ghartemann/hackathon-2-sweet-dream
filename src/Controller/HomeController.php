@@ -21,7 +21,7 @@ class HomeController extends AbstractController
         ]);
 
         return $this->render('home/index.html.twig', [
-            'interests' => $interests
+            'interests' => $interests,
         ]);
     }
 
@@ -41,10 +41,22 @@ class HomeController extends AbstractController
         return $this->redirectToRoute('app_home_index');
     }
 
-    #[Route('/likes', name: 'likes')]
-    public function showLikes(ProjectRepository $projectRepository): Response
+    #[Route('/{id}/dislike/from-like', name: 'dislike_project_from_like')]
+    public function dislikeProjectFromLike(Interest $interest, InterestRepository $interestRepository): Response
     {
-        $projects = $projectRepository->findAll();
+        $interest->setLikeStatus(null);
+        $interestRepository->add($interest, true);
+        return $this->redirectToRoute("app_home_likes");
+    }
+
+    #[Route('/likes', name: 'likes')]
+    public function showLikes(InterestRepository $interestRepository): Response
+    {
+        $user = $this->getUser();
+        $userId = $user->getId();
+
+        $projects = $interestRepository->findUserInterests($userId);
+//        $projects = $interestRepository->findBy(['user' => $userId,]);
 
         return $this->render('home/likes.html.twig', ['projects' => $projects]);
     }

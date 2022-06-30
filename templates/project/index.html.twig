@@ -3,71 +3,79 @@
 {% block title %}Project index{% endblock %}
 
 {% block body %}
-<div class="d-flex flex-column align-items-center">
-    <h1 class="text-center">My projects</h1>
+    <div class="container">
+        <div class="row p-4">
+            <div class="col-12">
+                <h2 class="text-center text-white">My projects</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column align-items-center">
         <div style="min-width: 400px; max-width: 400px;" class="mb-2 mt-4">
             <a href="{{ path('app_project_new') }}">
                 <p class="addProject text-center" style="min-width: 400px; max-width: 400px;">Add a new project<br>+</p>
             </a>
         </div>
 
-                {% for project in projects %}
-                    <div class="card shadow mt-2 mb-2" style="max-width: 700px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img src="{{ asset(project.picture) }}"
-                                     class="img-fluid rounded-start card-like-pic" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <a href="{{ path('app_project_show', {'id': project.id} ) }}"
-                                       class="card-like animate__animated animate__fadeInRight">
-                                        <h5 class="card-title">{{ project.title }}</h5>
+        {% for project in projects %}
+            <div class="card shadow mt-2 mb-2 card-like animate__animated animate__fadeInRight"
+                 style="max-width: 700px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <a href="{{ path('app_project_show', {'id': project.id} ) }}">
+                            <img src="{{ asset(project.picture) }}"
+                                 class="img-fluid rounded-start card-like-pic" alt="...">
+                        </a>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <a href="{{ path('app_project_show', {'id': project.id} ) }}">
+                                <h5 class="card-title">{{ project.title }}</h5>
 
-                                    </a>
-                                    <p class="card-text">
-                                        <small class="text-muted">{{ project.agency }}</small>
-                                    </p>
-                                    <p class="card-text">Field : {{ project.topic }}</p>
-                                    <p class="card-text">{{ project.description }}</p>
-                                    <p class="card-text">
-                                        <small class="text-muted">
-                                            {% for techno in project.techno %}
-                                                #{{ techno }}
-                                            {% endfor %}
-                                        </small>
-                                    </p>
-                                    {% if project.meeting %}
-                                        <p class="card-text">Meeting scheduled: {{ project.meeting }}</p>
-                                    {% else %}
-                                        <a href="{{ path('app_project_edit', {'id': project.id} ) }}"><p
-                                                    class="card-text planMeeting">Plan a new meeting !</p></a>
-                                    {% endif %}
+                            </a>
+                            <p class="card-text">
+                                <small class="text-muted">{{ project.agency }}</small>
+                            </p>
+                            <p class="card-text">Field : {{ project.topic }}</p>
+                            <p class="card-text">{{ project.description }}</p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    {% for techno in project.techno %}
+                                        #{{ techno }}
+                                    {% endfor %}
+                                </small>
+                            </p>
+                            {% if project.meeting %}
+                                <p class="card-text">Meeting scheduled: {{ project.meeting }}</p>
+                            {% else %}
+                                <a href="{{ path('app_project_edit', {'id': project.id} ) }}"><p
+                                            class="card-text planMeeting">Plan a new meeting!</p></a>
+                            {% endif %}
 
-                                </div>
-                            </div>
                         </div>
                     </div>
-                    {# </a> #}
-                {% else %}
-                    <p class="text-white">Nothing to display.</p>
-                {% endfor %}
+                </div>
+            </div>
+            {# </a> #}
+        {% else %}
+            <p class="text-white">Nothing to display.</p>
+        {% endfor %}
     </div>
 
-        {# completely useless but looks nice doesn't it #}
-        <nav class='mt-5' aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link"></a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">></a>
-                </li>
-            </ul>
-        </nav>
+    {# completely useless but looks nice doesn't it #}
+    <nav class='mt-5' aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link"> < </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">></a>
+            </li>
+        </ul>
+    </nav>
 
-</div>
 {% endblock %}
