@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Interest;
 use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
@@ -16,6 +17,8 @@ class ProjectController extends AbstractController
     #[Route('/', name: 'app_project_index', methods: ['GET'])]
     public function index(ProjectRepository $projectRepository): Response
     {
+        //$projects = $projectRepository->findAll();
+        //dump($projects); die();
         return $this->render('project/index.html.twig', [
             'projects' => $projectRepository->findAll(),
         ]);
@@ -25,8 +28,11 @@ class ProjectController extends AbstractController
     public function new(Request $request, ProjectRepository $projectRepository): Response
     {
         $project = new Project();
+        //$interest = new Interest();
+        //$project->addInterest($interest);
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
+        //dump($form); die();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $projectRepository->add($project, true);
