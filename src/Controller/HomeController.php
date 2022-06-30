@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
+use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route(name: 'app_home_')]
 class HomeController extends AbstractController
 {
-    #[Route('/home', name: 'app_home')]
+    #[Route('/', name: 'index')]
     public function index(): Response
     {
         return $this->render('home/index.html.twig', [
@@ -16,11 +18,11 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/likes', name: 'app_likes')]
-    public function showLikes(): Response
+    #[Route('/likes', name: 'likes')]
+    public function showLikes(ProjectRepository $projectRepository): Response
     {
-        return $this->render('home/likes.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
+        $projects = $projectRepository->findAll();
+
+        return $this->render('home/likes.html.twig', ['projects' => $projects]);
     }
 }

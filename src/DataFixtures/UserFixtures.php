@@ -24,8 +24,32 @@ class UserFixtures extends Fixture
             $user->setPassword($faker->password());
             $user->setAgency($faker->randomElement(
                 [
-                    'Nantes', 'Lyon', 'Le Mans', 'Aveiro', 'Niort', 'Dijon', 'Montpellier', 'Clermont-Ferrand', 'Lille', 'Vernon', 'Rennes', 'Genève', 'Toulouse', 'Munich', 'Canada', 'Aix-en-Provence', 'Orléans', 'Brest', 'Bruxelles', 'Casalblanca', 'Strasbourg', 'Nice - Sophia Antipolis', 'Bordeaux', 'Tours',
-                ]));
+                    'Nantes',
+                    'Lyon',
+                    'Le Mans',
+                    'Aveiro',
+                    'Niort',
+                    'Dijon',
+                    'Montpellier',
+                    'Clermont-Ferrand',
+                    'Lille',
+                    'Vernon',
+                    'Rennes',
+                    'Genève',
+                    'Toulouse',
+                    'Munich',
+                    'Canada',
+                    'Aix-en-Provence',
+                    'Orléans',
+                    'Brest',
+                    'Bruxelles',
+                    'Casalblanca',
+                    'Strasbourg',
+                    'Nice - Sophia Antipolis',
+                    'Bordeaux',
+                    'Tours',
+                ]
+            ));
             $user->setSkills($faker->sentence());
             $user->setPosition($faker->jobTitle());
             $user->setRoles((array)'ROLE_USER');

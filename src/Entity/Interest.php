@@ -11,15 +11,13 @@ class Interest
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
-
-
+    private int $id;
 
     #[ORM\ManyToOne(targetEntity: Project::class, inversedBy: 'interests')]
-    private $project;
+    private Project $project;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
-    private $likeStatus;
+    private ?bool $likeStatus;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'interests')]
     private $user;

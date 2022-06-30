@@ -17,7 +17,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private $email;
@@ -29,31 +29,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $firstname;
+    private string $firstname;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $lastname;
+    private string $lastname;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $phone;
+    private string $phone;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $agency;
+    private ?string $agency;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private $skills;
+    private ?string $skills;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $position;
+    private ?string $position;
 
     #[ORM\Column(type: 'boolean')]
-    private $participant;
+    private bool $participant;
 
     #[ORM\Column(type: 'boolean')]
-    private $organizer;
+    private bool $organizer;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Interest::class)]
-    private $interests;
+    private Collection $interests;
 
     public function __construct()
     {
