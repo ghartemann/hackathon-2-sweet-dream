@@ -9,7 +9,11 @@
                 <a href="{{ path('app_home_likes') }}">Likes</a>
             </li>
             <li>
-                <a href="#">Login</a>
+                {% if app.user %}
+                    <a href="{{ path('app_logout') }}">Log out</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}">Log in</a>
+                {% endif %}
             </li>
             <li>
                 <a href="#">Manage projects</a>
