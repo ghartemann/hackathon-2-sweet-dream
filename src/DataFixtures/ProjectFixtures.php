@@ -25,14 +25,37 @@ class ProjectFixtures extends Fixture
                 'Rad project',
                 'New project',
                 'Medical monitoring app',
-                'Amazing project'
+                'Amazing project',
             ]))
                 ->setTopic($faker->randomElement(
                     ['Banking', 'Insurance', 'Medicine', 'Aeronautics', 'Energy']
                 ))
                 ->setAgency($faker->randomElement(
                     [
-                        'Nantes', 'Lyon', 'Le Mans', 'Aveiro', 'Niort', 'Dijon', 'Montpellier', 'Clermont-Ferrand', 'Lille', 'Vernon', 'Rennes', 'Genève', 'Toulouse', 'Munich', 'Canada', 'Aix-en-Provence', 'Orléans', 'Brest', 'Bruxelles', 'Casablanca', 'Strasbourg', 'Nice - Sophia Antipolis', 'Bordeaux', 'Tours'
+                        'Nantes, France',
+                        'Lyon, France',
+                        'Le Mans, France',
+                        'Aveiro, Portugal',
+                        'Niort, France',
+                        'Dijon, France',
+                        'Montpellier, France',
+                        'Clermont-Ferrand, France',
+                        'Lille, France',
+                        'Vernon, France',
+                        'Rennes, France',
+                        'Geneva, Switzerland',
+                        'Toulouse, France',
+                        'Munich, Germany',
+                        'Montréal, Canada',
+                        'Aix-en-Provence, France',
+                        'Orléans, France',
+                        'Brest, France',
+                        'Bruxelles, Belgium',
+                        'Casalblanca, Morocco',
+                        'Strasbourg, France',
+                        'Nice - Sophia Antipolis, France',
+                        'Bordeaux, France',
+                        'Tours, France',
                     ]
                 ))
                 ->setTechno($faker->randomElements(
@@ -51,7 +74,6 @@ class ProjectFixtures extends Fixture
                     ],
                     rand(2, 5)
                 ))
-
                 ->setDescription($faker->text(100))
                 ->setPicture($faker->randomElement([
                     'build/images/project.jpg',
@@ -59,7 +81,7 @@ class ProjectFixtures extends Fixture
                     'build/images/project3.jpg',
                     'build/images/project4.jpg',
                 ]));
-                 $this->addReference('project_' . $i, $project);
+            $this->addReference('project_' . $i, $project);
 
 
             $manager->persist($project);

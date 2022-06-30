@@ -75,9 +75,12 @@ h5 {
 
 .addProject {
   color: white;
-  background-color: linear-gradient(to right bottom, #ff7949, #ff465e, #fe0083, #dc00b1, #8e19e1);
   border: solid 5px;
   border-radius: 100px 100px / 100px;
+}
+
+.addProject:hover {
+  background: linear-gradient(to left top, #ff7949, #ff465e, #fe0083, #dc00b1, #8e19e1);
 }
 
 .planMeeting {
@@ -88,10 +91,17 @@ h5 {
   font-weight: bolder;
 }
 
+.delete-like-show {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  font-size: 20pt;
+}
+
 // SWIPE BIDULE
 .tinder {
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
