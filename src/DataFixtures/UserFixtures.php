@@ -58,6 +58,8 @@ class UserFixtures extends Fixture
             $user->setParticipant($faker->boolean());
             $user->setOrganizer($faker->boolean());
 
+            $this->addReference('user_' . $i, $user);
+
             $manager->persist($user);
         }
         $manager->flush();

@@ -27,6 +27,7 @@
                                     <a href="{{ path('app_project_show', {'id': project.id} ) }}"
                                        class="card-like animate__animated animate__fadeInRight">
                                         <h5 class="card-title">{{ project.title }}</h5>
+
                                     </a>
                                     <p class="card-text">
                                         <small class="text-muted">{{ project.agency }}</small>
@@ -46,6 +47,7 @@
                                         <a href="{{ path('app_project_edit', {'id': project.id} ) }}"><p
                                                     class="card-text">Plan a new meeting !</p></a>
                                     {% endif %}
+
                                 </div>
                             </div>
                         </div>
