@@ -3,15 +3,15 @@
 {% block title %}Project index{% endblock %}
 
 {% block body %}
-    <h1>Project index</h1>
-        <div class="" style="max-width: 700px;">
+<div class="d-flex flex-column align-items-center">
+    <h1 class="text-center">Project index</h1>
+        <div style="max-width: 700px;">
             <a href="{{ path('app_project_new') }}">
                 <p class="addProject text-center">+</p>
             </a>
         </div>
 
                 {% for project in projects %}
-                    {# <a href="{{ path('app_project_show', {'id': project.id} ) }}" class="card-like animate__animated animate__fadeInRight"> #}
                     <div class="card shadow" style="max-width: 700px;">
                         <div class="row g-0">
                             <div class="col-md-4">
@@ -50,15 +50,13 @@
                 {% else %}
                     <p class="text-white">Nothing to display.</p>
                 {% endfor %}
-
-            </div>
-        </div>
+    </div>
 
         {# completely useless but looks nice doesn't it #}
         <nav class='mt-5' aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
-                    <a class="page-link"><</a>
+                    <a class="page-link"></a>
                 </li>
                 <li class="page-item"><a class="page-link" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -69,5 +67,5 @@
             </ul>
         </nav>
 
-    </div>
+</div>
 {% endblock %}
