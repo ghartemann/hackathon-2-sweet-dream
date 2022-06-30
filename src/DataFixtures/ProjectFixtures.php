@@ -30,7 +30,9 @@ class ProjectFixtures extends Fixture
                     ['Banque', 'Assurance', 'Médecine', 'Aéronautique', 'Énergies']
                 ))
                 ->setAgency($faker->randomElement(
-                    ['Lyon', 'Casablanca', 'Rennes', 'Tours', 'Strasbourg', 'Munich']
+                    [
+                        'Nantes', 'Lyon', 'Le Mans', 'Aveiro', 'Niort', 'Dijon', 'Montpellier', 'Clermont-Ferrand', 'Lille', 'Vernon', 'Rennes', 'Genève', 'Toulouse', 'Munich', 'Canada', 'Aix-en-Provence', 'Orléans', 'Brest', 'Bruxelles', 'Casablanca', 'Strasbourg', 'Nice - Sophia Antipolis', 'Bordeaux', 'Tours'
+                    ]
                 ))
                 ->setTechno($faker->randomElements(
                     [

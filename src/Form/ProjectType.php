@@ -42,7 +42,6 @@ class ProjectType extends AbstractType
             ))
             ->add('description', TextType::class, ['label' => 'Description'])
             ->add('meeting', TextType::class, ['label' => 'Réunion à venir'])
-            //->add('interests')
         ;
     }
 
