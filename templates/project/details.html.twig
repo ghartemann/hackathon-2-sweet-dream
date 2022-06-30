@@ -5,9 +5,9 @@
 
 {% block body %}
 
-    <div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center">
 
-        <div class="card show-card-contained" style="width: 18rem;">
+	<div class="card show-card-contained" style="width: 18rem;">
 
             <img class="card-img-top" src="{{ asset('build/images/project.jpg') }}" alt="description image">
             <div class="card-body show-card-contained">
@@ -28,9 +28,10 @@
         </div>
     </div>
 
-    <div>
-        <h2 class="main-title text-center text-white mb-5 mt-5">Apsidians interested by your project:</h2>
-    </div>
+
+<div>
+	<h2 class="main-title text-center text-white mb-5 mt-5">Apsidians interested by your project:</h2>
+</div>
 
 <div class="d-flex flex-column align-items-center gap-4 mb-5">
 	{% for interest in interests %}
@@ -54,14 +55,18 @@
 									{% endfor %}
 								</small>
 							</p>
+
                             <p>{{ interest.user.skills}}</p>
                             <button class="btn btn-primary">Invite to next meeting</button>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
     {% endfor %}
 </div>
+
 
 {% endblock %}
