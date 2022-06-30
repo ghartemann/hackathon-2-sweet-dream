@@ -15,19 +15,19 @@ class ProjectFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $project = new Project();
             $project->setTitle($faker->unique()->randomElement([
-                'Super projet',
-                'Webapp pour une association',
-                'Projet d\'appli géolocalisée',
-                'Un autre super projet',
-                'Projet de webapp',
-                'Projet secret',
-                'Site e-commerce',
-                'Projet génial',
-                'Nouveau projet',
-                'Appli de suivi médical',
+                'Wonderful project',
+                'Webapp for an association',
+                'Geolocation',
+                'Great project',
+                'Webapp project',
+                'Secret project',
+                'Ecommerce website',
+                'PAwesome project',
+                'New project',
+                'Medical monitoring webapp',
             ]))
                 ->setTopic($faker->randomElement(
-                    ['Banque', 'Assurance', 'Médecine', 'Aéronautique', 'Énergies']
+                    ['Bank', 'Insurance', 'Medical', 'aeronautics', 'Energies']
                 ))
                 ->setAgency($faker->randomElement(
                     [
