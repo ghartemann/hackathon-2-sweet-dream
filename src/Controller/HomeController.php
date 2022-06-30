@@ -33,11 +33,11 @@ class HomeController extends AbstractController
         return $this->redirectToRoute('app_home_index');
     }
 
-    #[Route('/dislike/project', name: 'dislike_project')]
-    public function dislikeProject(InterestRepository $interestRepository): Response
+    #[Route('/{id}/dislike/project', name: 'dislike_project')]
+    public function dislikeProject(Interest $interest, InterestRepository $interestRepository): Response
     {
-        $interest = $interestRepository->findOneBy([]);
         $interest->setLikeStatus(false);
+        $interestRepository->add($interest, true);
         return $this->redirectToRoute('app_home_index');
     }
 
