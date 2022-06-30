@@ -60,39 +60,7 @@
 				</div>
 			</div>
 		</div>
-    </div>
-	{% endfor %}
-
-    <div class="d-flex flex-column align-items-center gap-4 mb-5">
-        {% for user in users|slice(0,5) %}
-
-
-            <div class="card shadow" style="width: 537px;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="https://i.pravatar.cc/{{ random(150, 200) }}"
-                             class="img-fluid rounded-start card-like-pic" alt="profile picture">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ user.firstname }}
-                                {{ user.lastname }}</h5>
-                            <p class="card-text">
-                                <small class="text-muted">{{ user.agency }}</small>
-                            </p>
-                            <p class="card-text">
-                                <small class="text-muted">
-                                    {% for techno in project.techno %}
-                                        #{{ techno }}
-                                    {% endfor %}
-                                </small>
-                            </p>
-                            <p>{{ user.skills }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
