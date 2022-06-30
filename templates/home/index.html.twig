@@ -1,25 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Match{% endblock %}
 
 {% block body %}
-    <div class="tinder">
-        <div class="tinder--status">
-            <i class="fa fa-remove"></i>
-            <i class="fa fa-heart"></i>
-        </div>
-
-        <div class="tinder--cards">
-            <div class="tinder--card">
-                <img src="https://placeimg.com/600/300/people">
-                <h3>Demo card 1</h3>
-                <p>This is a demo for Tinder like swipe cards</p>
+        <h1 class="text-center">Like your project !</h1>
+        <div class="container center">
+        {% for interest in interests %}
+        {% if loop.index == 1 %}
+        <div class="card" style="width: 18rem;">
+            <img src="https://placeimg.com/300/300/tech" class="card-img-top" alt="Tech">
+            <div class="card-body">
+                <h2 class="card-title">{{ interest.project.title}}</h2>
+                <p class="card-text">{{ interest.project.topic }}</p>
+                <p class="card-text">{{ interest.project.description }}</p>
+                <p class="card-text"> {% for tech in interest.project.techno %}{{ tech }}{% endfor %}</p>
+                <a href="{{ path('app_home_dislike_project', {'id': interest.id}) }}" class="btn btn-danger" value="dislike">Dislike</a>
+                <a href="{{ path('app_home_like_project', {'id': interest.id}) }}" class="btn btn-primary" value="like">Like</a>
             </div>
         </div>
+        {% endif %}
+        {% endfor %}
+        </div>
 
-        <div class="tinder--buttons">
+        {#<div class="tinder--buttons">
             <button id="nope"><i class="fa fa-remove"></i></button>
             <button id="love"><i class="fa fa-heart"></i></button>
-        </div>
-    </div>
+        </div>#}
 {% endblock %}

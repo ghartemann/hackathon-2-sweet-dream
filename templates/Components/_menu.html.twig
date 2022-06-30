@@ -1,28 +1,28 @@
 <div id="mySidenav" class="sidenav d-flex flex-column justify-content-between">
-    <div>
-        <a id="closeBtn" href="#" class="close">×</a>
-        <ul>
-            <li>
-                <a href="{{ path('app_home_index') }}">Home</a>
-            </li>
-            <li>
-                <a href="{{ path('app_home_likes') }}">Likes</a>
-            </li>
-            <li>
-                {% if app.user %}
-                    <a href="{{ path('app_logout') }}">Log out</a>
-                {% else %}
-                    <a href="{{ path('app_login') }}">Log in</a>
-                {% endif %}
-            </li>
-            <li>
-                <a href="#">Manage projects</a>
-            </li>
-        </ul>
-    </div>
-    <a href="https://apside.com">
-        <img class="logo-apside" src="{{ asset("build/images/logo.png") }}" alt="Apside logo">
-    </a>
+	<div>
+		<a id="closeBtn" href="#" class="close">×</a>
+		<ul>
+			<li>
+				<a href="{{ path('app_home_index') }}">Home</a>
+			</li>
+			<li>
+				<a href="{{ path('app_home_likes') }}">Likes</a>
+			</li>
+			<li>
+				{% if app.user %}
+					<a href="{{ path('app_logout') }}">Log out</a>
+				{% else %}
+					<a href="{{ path('app_login') }}">Log in</a>
+				{% endif %}
+			</li>
+			<li>
+				<a href="{{ path ('app_project_index') }}">Manage projects</a>
+			</li>
+		</ul>
+	</div>
+	<a href="https://apside.com">
+		<img class="logo-apside" src="{{ asset("build/images/logo.png") }}" alt="Apside logo">
+	</a>
 </div>
 
 <a href="#" id="openBtn">
