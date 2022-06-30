@@ -32,13 +32,12 @@
 		<h2 class="main-title text-center text-white mb-0 mt-5">Apsidians interested by your project:</h2>
 	</div>
 
-    {% for user in users %}
-	{% for user in users %}
+	{% for user in users|slice(0,5) %}
 		<div class="d-flex justify-content-center">
 			<div class="card shadow mt-5" style="width: 537px;">
 				<div class="row g-0">
 					<div class="col-md-4">
-						<img src="https://i.pravatar.cc" class="img-fluid rounded-start card-like-pic p-3" alt="profile picture">
+						<img src="https://i.pravatar.cc/{{ random(150, 200)}}" class="img-fluid rounded-start card-like-pic p-3" alt="profile picture">
 					</div>
 					<div class="col-md-8">
 						<div class="card-body">
@@ -54,6 +53,7 @@
 									{% endfor %}
 								</small>
 							</p>
+                            <p>{{ user.skills}}</p>
 						</div>
 					</div>
 				</div>
