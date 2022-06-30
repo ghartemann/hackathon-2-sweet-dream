@@ -11,6 +11,7 @@ import './styles/_menu.scss'
 import 'animate.css';
 import 'bootstrap';
 import './scripts/menu.js';
+import './scripts/match.js';
 
 // start the Stimulus application
 import './bootstrap';

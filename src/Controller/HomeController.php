@@ -25,4 +25,12 @@ class HomeController extends AbstractController
 
         return $this->render('home/likes.html.twig', ['projects' => $projects]);
     }
+
+    #[Route('/match', name: 'match')]
+    public function matching(ProjectRepository $projectRepository): Response
+    {
+        $projects = $projectRepository->findAll();
+
+        return $this->render('home/match.html.twig', ['projects' => $projects]);
+    }
 }
