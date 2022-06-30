@@ -40,8 +40,14 @@
                                     {% if project.meeting %}
                                         <p class="card-text">Meeting scheduled: {{ project.meeting }}</p>
                                     {% else %}
-                                        <a href="{{ path('app_project_edit', {'id': project.id} ) }}"><p
-                                                    class="card-text planMeeting">Plan a new meeting !</p></a>
+                                        <a href="{{ path('app_project_edit', {'id': project.id} ) }}">
+                                            <p class="card-text planMeeting">
+                                            <img src="{{ asset("build/images/google_logo.png") }}" height="30">
+                                            Plan a new meeting !
+                                            </p>
+                                            
+                                        </a>
+
                                     {% endif %}
 
                                 </div>
