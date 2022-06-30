@@ -50,6 +50,7 @@ class ProjectFixtures extends Fixture
                     ],
                     rand(2, 5)
                 ))
+
                 ->setDescription($faker->text(100))
                 ->setPicture($faker->randomElement([
                     'build/images/project.jpg',
@@ -57,6 +58,8 @@ class ProjectFixtures extends Fixture
                     'build/images/project3.jpg',
                     'build/images/project4.jpg',
                 ]));
+                 $this->addReference('project_' . $i, $project);
+
 
             $manager->persist($project);
         }

@@ -39,6 +39,20 @@ class InterestRepository extends ServiceEntityRepository
         }
     }
 
+    public function findInterestedUsers()
+    {
+        $queryBuilder = $this->createQueryBuilder('i')
+        ->join('i.user', 'u')
+        ->join('i.project', 'p')
+        ->addSelect('u')
+        ->where('i.likeStatus = true')
+        ->andWhere('p.id=i.project')
+        ->getQuery();
+
+        return $queryBuilder->getResult();
+
+    }
+
 //    /**
 //     * @return Interest[] Returns an array of Interest objects
 //     */
