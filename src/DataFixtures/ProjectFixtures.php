@@ -12,10 +12,9 @@ class ProjectFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
-        for ($i = 0; $i < 10; $i++) 
-        {
-        $project = new Project();
-        $project->setTitle($faker->unique()->randomElement([
+        for ($i = 0; $i < 10; $i++) {
+            $project = new Project();
+            $project->setTitle($faker->unique()->randomElement([
                 'Super projet',
                 'Webapp pour une association',
                 'Projet d\'appli géolocalisée',
@@ -25,24 +24,34 @@ class ProjectFixtures extends Fixture
                 'Site e-commerce',
                 'Projet génial',
                 'Nouveau projet',
-                'Appli de suivi médical'
-                ]))
+                'Appli de suivi médical',
+            ]))
                 ->setTopic($faker->randomElement(
-                    ['Banque', 'Assurance', 'Médecine', 'Aéronautique', 'Energie']
+                    ['Banque', 'Assurance', 'Médecine', 'Aéronautique', 'Énergies']
                 ))
                 ->setAgency($faker->randomElement(
                     [
                         'Nantes', 'Lyon', 'Le Mans', 'Aveiro', 'Niort', 'Dijon', 'Montpellier', 'Clermont-Ferrand', 'Lille', 'Vernon', 'Rennes', 'Genève', 'Toulouse', 'Munich', 'Canada', 'Aix-en-Provence', 'Orléans', 'Brest', 'Bruxelles', 'Casablanca', 'Strasbourg', 'Nice - Sophia Antipolis', 'Bordeaux', 'Tours'
                     ]
                 ))
-                ->setTechno($faker->randomElement(
-                    ['Javascript', 'Java', 'PHP']
+                ->setTechno($faker->randomElements(
+                    [
+                        'Javascript',
+                        'Java',
+                        'PHP',
+                        'Vue.js',
+                        'React',
+                        'C#',
+                        'C++',
+                        'MySQL',
+                        'NextJS',
+                        'HTML',
+                        'SCSS',
+                    ], rand(2, 5)
                 ))
-                ->setDescription($faker->text(100))
-            ;
+                ->setDescription($faker->text(100));
 
-        $manager->persist($project);
-
+            $manager->persist($project);
         }
         $manager->flush();
     }

@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row p-4">
+            <div class="col-12">
+                <h2 class="text-center text-white">Mes likes</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-12 d-flex flex-column align-items-center gap-4">
+
+                {% for project in projects %}
+                    <a href="#" class="card-like animate__animated animate__fadeInRight">
+                        <div class="card shadow" style="max-width: 700px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ asset('build/images/project.jpg') }}"
+                                         class="img-fluid rounded-start card-like-pic" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ project.title }}</h5>
+                                        <p class="card-text">
+                                            <small class="text-muted">{{ project.agency }}</small>
+                                        </p>
+                                        <p class="card-text">Secteur : {{ project.topic }}</p>
+                                        <p class="card-text">{{ project.description }}</p>
+                                        <p class="card-text">
+                                            <small class="text-muted">
+                                                {% for techno in project.techno %}
+                                                    #{{ techno }}
+                                                {% endfor %}
+                                            </small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% else %}
+                    <p class="text-white">Rien à afficher... Allez liker quelques projets pour commencer !</p>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        {# completely useless but looks nice doesn't it #}
+        <nav class='mt-5' aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link"><</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">></a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+{% endblock %}
