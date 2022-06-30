@@ -66,11 +66,11 @@ allCards.forEach(function (el) {
             event.target.style.transform = 'translate(' + toX + 'px, ' + (toY + event.deltaY) + 'px) rotate(' + rotate + 'deg)';
             initCards();
         }
-
+        let superAttributeId = parseInt(event.target.getAttribute("data-interestid"))
         if (event.deltaX < 0) {
-            window.location.href = '/' + interestId + '/dislike/project';
+            ajaxPost('/' + superAttributeId + '/like/project-ajax', false);
         } else {
-            window.location.href = '/' + interestId + '/like/project';
+            ajaxPost('/' + superAttributeId + '/like/project-ajax', true);
         }
     });
 });
@@ -103,3 +103,11 @@ var loveListener = createButtonListener(true);
 
 nope.addEventListener('click', nopeListener);
 love.addEventListener('click', loveListener);
+
+function ajaxPost(url, data) {
+    let req = new XMLHttpRequest();
+    req.open("POST", url);
+    console.log(data)
+    req.send(JSON.stringify(data));
+
+}

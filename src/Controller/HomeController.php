@@ -5,7 +5,10 @@ namespace App\Controller;
 use App\Entity\Interest;
 use App\Repository\InterestRepository;
 use App\Repository\ProjectRepository;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -60,4 +63,15 @@ class HomeController extends AbstractController
 
         return $this->render('home/likes.html.twig', ['projects' => $projects]);
     }
+
+    #[Route('/{id}/like/project-ajax', name: 'like_project_ajax', methods: ['POST'])]
+    public function likeProjectAjax(Interest $interest, InterestRepository $interestRepository, Request $request, LoggerInterface $logger): Response
+    {
+        $like = $request->getContent() === 'true';
+        $interest->setLikeStatus($like);
+        $interestRepository->add($interest, true);
+        return new JsonResponse();
+    }
+
+
 }

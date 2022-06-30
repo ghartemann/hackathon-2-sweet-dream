@@ -24,7 +24,6 @@ class InterestRepository extends ServiceEntityRepository
     public function add(Interest $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
-
         if ($flush) {
             $this->getEntityManager()->flush();
         }

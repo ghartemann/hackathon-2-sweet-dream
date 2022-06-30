@@ -64,7 +64,7 @@
 
             <div class="tinder--cards">
                 {% for interest in interests %}
-                    <div class="tinder--card shadow">
+                    <div class="tinder--card shadow" data-interestid="{{ interest.id }}">
                         <img style="max-height: 250px; object-fit: cover; width: 100%;"
                              src="{{ asset(interest.project.picture) }}">
                         <h3 class="text-primary">{{ interest.project.title }}</h3>
