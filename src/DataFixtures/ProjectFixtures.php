@@ -50,6 +50,7 @@ class ProjectFixtures extends Fixture
                     ], rand(2, 5)
                 ))
                 ->setDescription($faker->text(100));
+                $this->addReference('project_' . $i, $project);
 
             $manager->persist($project);
         }

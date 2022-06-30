@@ -30,7 +30,7 @@
                                         <p class="card-text">
                                             <small class="text-muted">{{ project.agency }}</small>
                                         </p>
-                                        <p class="card-text">Industry : {{ project.topic }}</p>
+                                        <p class="card-text">Industry: {{ project.topic }}</p>
                                         <p class="card-text">{{ project.description }}</p>
                                         <p class="card-text">
                                             <small class="text-muted">
@@ -40,7 +40,7 @@
                                             </small>
                                         </p>
                                         {% if project.meeting %}
-                                        <p class="card-text">Meeting prévu le : {{ project.meeting }}</p>
+                                        <p class="card-text">Meeting due to take place on: {{ project.meeting }}</p>
                                         {% else %}
                                         <a href="{{ path('app_project_edit', {'id': project.id} ) }}"><p class="card-text">Plan a new meeting !</p></a>
                                         {% endif %}
