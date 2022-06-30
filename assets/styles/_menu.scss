@@ -5,6 +5,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
+  z-index: 99;
 }
 
 #openBtnInfo {
@@ -28,6 +29,7 @@
   padding-top: 60px;
   transition: right 0.5s ease;
   box-shadow: rgba(0, 0, 0, 0.3) 2px 1px 10px 1px;
+  z-index: 99;
 }
 
 /* Sidenav menu links */
@@ -38,12 +40,14 @@
   color: black;
   display: block;
   transition: 0.3s;
+  z-index: 99;
 }
 
 .sidenav a:hover {
   background: linear-gradient(to right bottom, #ff7949, #ff465e, #fe0083, #dc00b1, #8e19e1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  z-index: 99;
 }
 
 .sidenav p {
@@ -53,12 +57,14 @@
   font-size: 20px;
   padding: 8px 8px 8px 32px;
   bottom: 10px;
+  z-index: 99;
 }
 
 .sidenav ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  z-index: 99;
 }
 
 /* Active class */

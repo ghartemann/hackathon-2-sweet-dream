@@ -3,41 +3,42 @@
 {% block title %}Project{% endblock %}
 
 {% block body %}
+    {{ parent() }}
 
     <h1>Project</h1>
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ project.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ project.title }}</td>
-            </tr>
-            <tr>
-                <th>Topic</th>
-                <td>{{ project.topic }}</td>
-            </tr>
-            <tr>
-                <th>Agency</th>
-                <td>{{ project.agency }}</td>
-            </tr>
-            <tr>
-                <th>Techno</th>
-                <td>{% for key, value in project.techno %}
+        <tr>
+            <th>Id</th>
+            <td>{{ project.id }}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ project.title }}</td>
+        </tr>
+        <tr>
+            <th>Topic</th>
+            <td>{{ project.topic }}</td>
+        </tr>
+        <tr>
+            <th>Agency</th>
+            <td>{{ project.agency }}</td>
+        </tr>
+        <tr>
+            <th>Techno</th>
+            <td>{% for key, value in project.techno %}
                     <p> {{ value }} </p>
-                    {% endfor %}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ project.description }}</td>
-            </tr>
-            <tr>
-                <th>Meeting</th>
-                <td>{{ project.meeting }}</td>
-            </tr>
+                {% endfor %}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ project.description }}</td>
+        </tr>
+        <tr>
+            <th>Meeting</th>
+            <td>{{ project.meeting }}</td>
+        </tr>
         </tbody>
     </table>
 
