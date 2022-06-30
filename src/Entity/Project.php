@@ -13,28 +13,28 @@ class Project
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $title;
+    private string $title;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $topic;
+    private ?string $topic;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $agency;
+    private ?string $agency;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $techno;
+    #[ORM\Column(type: 'array', length: 255, nullable: true)]
+    private ?array $techno;
 
     #[ORM\Column(type: 'text', nullable: true)]
-    private $description;
+    private ?string $description;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $meeting;
+    private ?string $meeting;
 
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: Interest::class)]
-    private $interests;
+    private Collection $interests;
 
     public function __construct()
     {
@@ -82,12 +82,12 @@ class Project
         return $this;
     }
 
-    public function getTechno(): ?string
+    public function getTechno(): ?array
     {
         return $this->techno;
     }
 
-    public function setTechno(?string $techno): self
+    public function setTechno(?array $techno): self
     {
         $this->techno = $techno;
 

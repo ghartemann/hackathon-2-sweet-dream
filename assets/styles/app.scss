@@ -1,19 +1,45 @@
+$primary: #ff7949;
+$box-shadow: 0 .5rem 1rem rgba(black, .30);
+
 @import "~bootstrap/scss/bootstrap";
 
+
+@font-face {
+  font-family: Montserrat;
+  src: url("../fonts/Montserrat/Montserrat-VariableFont_wght.ttf") format('truetype'),
+  url("../fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: Montserrat-extrabold;
+  src: url("../fonts/Montserrat/static/Montserrat-ExtraBold.ttf") format('truetype'),
+  url("../fonts/Montserrat/static/Montserrat-ExtraBoldItalic.ttf");
+}
 
 *, *:before, *:after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: Montserrat, Helvetica, sans-serif;
 }
 
 body {
   background-image: linear-gradient(to right bottom, #ff7949, #ff465e, #fe0083, #dc00b1, #8e19e1);
   min-height: 100vh;
+  background-attachment: fixed;
+}
+
+a {
+  text-decoration: none;
 }
 
 .main-title {
-  font-size: 38pt;
+  font-size: 25pt;
+  font-weight: bold;
+}
+
+.main-title-subtitle {
+  font-size: 50pt;
 }
 
 .card-like {
