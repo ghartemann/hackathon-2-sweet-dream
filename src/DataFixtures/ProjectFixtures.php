@@ -15,19 +15,19 @@ class ProjectFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $project = new Project();
             $project->setTitle($faker->unique()->randomElement([
-                'Super projet',
-                'Webapp pour une association',
-                'Projet d\'appli géolocalisée',
-                'Un autre super projet',
-                'Projet de webapp',
-                'Projet secret',
-                'Site e-commerce',
-                'Projet génial',
-                'Nouveau projet',
-                'Appli de suivi médical',
+                'Awesome project',
+                'Webapp for a charity',
+                'Another awesome project',
+                'Webapp project',
+                'Please join this project',
+                'Secret project',
+                'e-shopping website',
+                'Rad project',
+                'New project',
+                'Medical monitoring app',
             ]))
                 ->setTopic($faker->randomElement(
-                    ['Banque', 'Assurance', 'Médecine', 'Aéronautique', 'Énergies']
+                    ['Banking', 'Insurance', 'Medicine', 'Aeronautics', 'Energy']
                 ))
                 ->setAgency($faker->randomElement(
                     ['Lyon', 'Casablanca', 'Rennes', 'Tours', 'Strasbourg', 'Munich']
@@ -47,7 +47,13 @@ class ProjectFixtures extends Fixture
                         'SCSS',
                     ], rand(2, 5)
                 ))
-                ->setDescription($faker->text(100));
+                ->setDescription($faker->text(100))
+                ->setPicture($faker->randomElement([
+                    'build/images/project.jpg',
+                    'build/images/project2.jpg',
+                    'build/images/project3.jpg',
+                    'build/images/project4.jpg',
+                ]));
 
             $manager->persist($project);
         }
