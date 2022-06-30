@@ -67,3 +67,23 @@ a {
   justify-content: center;
   min-width: 50%;
 }
+
+h5{
+  color: #8e19e1;
+  font-weight: 900;
+}
+
+.addProject{
+color : white;
+background-color: linear-gradient(to right bottom, #ff7949, #ff465e, #fe0083, #dc00b1, #8e19e1);
+border: solid 5px;
+border-radius: 100px 100px / 100px;
+}
+
+.planMeeting{
+  font-style: italic;
+}
+
+.bold{
+  font-weight: bolder;
+}
