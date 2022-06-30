@@ -12,9 +12,9 @@ class ProjectFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             $project = new Project();
-            $project->setTitle($faker->unique()->randomElement([
+            $project->setTitle($faker->randomElement([
                 'Awesome project',
                 'Webapp for a charity',
                 'Another awesome project',
@@ -25,6 +25,7 @@ class ProjectFixtures extends Fixture
                 'Rad project',
                 'New project',
                 'Medical monitoring app',
+                'Amazing project'
             ]))
                 ->setTopic($faker->randomElement(
                     ['Banking', 'Insurance', 'Medicine', 'Aeronautics', 'Energy']

@@ -15,9 +15,8 @@ class InterestFixtures extends Fixture implements DependentFixtureInterface
         // $product = new Product();
         $faker = Factory::create();
 
-
-        for ($p = 0; $p < 10; $p++) {
-            for ($u = 0; $u < 50; $u++) {
+        for ($u = 0; $u < 50; $u++) {
+            for ($p = 0; $p < 30; $p++) {
                 $interest = new Interest();
                 $interest->setProject($this->getReference('project_' . $p));
                 $interest->setUser($this->getReference('user_' . $u));
