@@ -36,6 +36,9 @@ class Project
     #[ORM\OneToMany(mappedBy: 'project', targetEntity: Interest::class)]
     private Collection $interests;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private string $picture = "build/images/project.jpg";
+
     public function __construct()
     {
         $this->interests = new ArrayCollection();
@@ -144,6 +147,18 @@ class Project
                 $interest->setProject(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(string $picture): self
+    {
+        $this->picture = $picture;
 
         return $this;
     }
