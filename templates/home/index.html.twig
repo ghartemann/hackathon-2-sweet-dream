@@ -7,13 +7,14 @@
         <div class="container center">
         {% for interest in interests %}
         {% if loop.index == 1 %}
-        <div class="card" style="width: 18rem;">
+        <div class="card" id='tinder' style="width: 18rem;">
             <img src="https://placeimg.com/300/300/tech" class="card-img-top" alt="Tech">
             <div class="card-body">
                 <h2 class="card-title">{{ interest.project.title}}</h2>
                 <p class="card-text">{{ interest.project.topic }}</p>
                 <p class="card-text">{{ interest.project.description }}</p>
                 <p class="card-text"> {% for tech in interest.project.techno %}{{ tech }}{% endfor %}</p>
+                <p class="d-none" id="interestId">{{ interest.id }}</p>
                 <button class="btn">
                     <a href="{{ path('app_home_dislike_project', {'id': interest.id}) }}" class="btn btn-danger" value="dislike">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
