@@ -60,3 +60,8 @@ a {
 .show-card-container {
   display: flex;
 }
+
+.show-card-contained {
+  justify-content: center;
+  min-width: 50%;
+}

@@ -1,62 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Project{% endblock %}
+{% block title %}Project
+{% endblock %}
 
 {% block body %}
-{#
-    <h1>Project</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ project.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ project.title }}</td>
-            </tr>
-            <tr>
-                <th>Topic</th>
-                <td>{{ project.topic }}</td>
-            </tr>
-            <tr>
-                <th>Agency</th>
-                <td>{{ project.agency }}</td>
-            </tr>
-            <tr>
-                <th>Techno</th>
-                <td>{{ project.techno }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ project.description }}</td>
-            </tr>
-            <tr>
-                <th>Meeting</th>
-                <td>{{ project.meeting }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<div class="d-flex justify-content-center">
 
-    <a href="{{ path('app_project_index') }}">back to list</a>
+		<div class="card show-card-contained" style="width: 18rem;">
 
-    <a href="{{ path('app_project_edit', {'id': project.id}) }}">edit</a>
+			<div class="card-body show-card-contained">
+				<img class="card-img-top" src="{{ asset('build/images/project.jpg') }}" alt="description image">
+				<h5 class="card-title mt-2">{{ project.title }}</h5>
+				<p class="card-text mt-2">{{ project.agency }}</p>
+				<p class="card-text mt-2">{{ project.description }}</p>
+				<p class="card-text mt-2">
+					<small class="text-muted">
+						{% for techno in project.techno %}
+							#{{ techno }}
+						{% endfor %}
+					</small>
+				</p>
+				<div class="d-flex justify-content-center">
+					<a href="{{ path('app_project_edit', {'id': project.id}) }}" class="btn btn-primary">Edit</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    {{ include('project/_delete_form.html.twig') }}
-    #}
-<div class="mx-auto">
-    <h2>{{ project.title }}</h2>
+	<div>
+		<h2 class="main-title text-center text-white mb-0 mt-5">Apsidians interested by your project:</h2>
+	</div>
 
-    <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-</div>
+    {% for user in users %}
+	{% for user in users %}
+		<div class="d-flex justify-content-center">
+			<div class="card shadow mt-5" style="width: 537px;">
+				<div class="row g-0">
+					<div class="col-md-4">
+						<img src="https://i.pravatar.cc" class="img-fluid rounded-start card-like-pic p-3" alt="profile picture">
+					</div>
+					<div class="col-md-8">
+						<div class="card-body">
+							<h5 class="card-title">{{ user.firstname }}
+								{{ user.lastname }}</h5>
+							<p class="card-text">
+								<small class="text-muted">{{ user.agency }}</small>
+							</p>
+							<p class="card-text">
+								<small class="text-muted">
+									{% for techno in project.techno %}
+										#{{ techno }}
+									{% endfor %}
+								</small>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
 
 
 {% endblock %}
