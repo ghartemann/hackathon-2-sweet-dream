@@ -6,10 +6,18 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
 class UserFixtures extends Fixture
 {
+    private UserPasswordHasherInterface $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create('fr_FR');
@@ -21,7 +29,11 @@ class UserFixtures extends Fixture
             $user->setLastName($faker->lastName());
             $user->setPhone($faker->phoneNumber());
             $user->setEmail($faker->email());
-            $user->setPassword($faker->password());
+            $hashedPassword = $this->passwordHasher->hashPassword(
+                $user,
+                'password'
+            );
+            $user->setPassword($hashedPassword);
             $user->setAgency($faker->randomElement(
                 [
                     'Nantes',
@@ -53,8 +65,6 @@ class UserFixtures extends Fixture
             $user->setSkills($faker->sentence());
             $user->setPosition($faker->jobTitle());
             $user->setRoles((array)'ROLE_USER');
-
-
             $user->setParticipant($faker->boolean());
             $user->setOrganizer($faker->boolean());
 
