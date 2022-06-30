@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Interest;
 use App\Entity\Project;
 use App\Form\ProjectType;
+use App\Repository\InterestRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -48,12 +49,12 @@ class ProjectController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_project_show', methods: ['GET'])]
-    public function show(Project $project, UserRepository $userRepository): Response
+    public function show(Project $project, InterestRepository $interestRepository): Response
     {
-        $users = $userRepository->findAll();
+        $interests = $interestRepository->findInterestedUsers();
         return $this->render('project/details.html.twig', [
             'project' => $project,
-            'users' => $users
+            'interests' => $interests
         ]);
     }
 
