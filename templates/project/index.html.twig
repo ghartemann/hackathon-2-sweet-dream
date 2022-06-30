@@ -1,45 +1,75 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Project index{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-    <h1>Project index</h1>
+    <div class="container">
+        <div class="row p-4">
+            <div class="col-12">
+                <h2 class="text-center text-white">My Projects</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-12 d-flex flex-column align-items-center gap-4">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Topic</th>
-                <th>Agency</th>
-                <th>Techno</th>
-                <th>Description</th>
-                <th>Meeting</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for project in projects %}
-            <tr>
-                <td>{{ project.id }}</td>
-                <td>{{ project.title }}</td>
-                <td>{{ project.topic }}</td>
-                <td>{{ project.agency }}</td>
-                <td>{# project.techno #}</td>
-                <td>{{ project.description }}</td>
-                <td>{{ project.meeting }}</td>
-                <td>
-                    <a href="{{ path('app_project_show', {'id': project.id}) }}">show</a>
-                    <a href="{{ path('app_project_edit', {'id': project.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                {% for project in projects %}
+                    {#<a href="{{ path('app_project_show', {'id': project.id} ) }}" class="card-like animate__animated animate__fadeInRight">#}
+                        <div class="card shadow" style="max-width: 700px;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ asset('build/images/project.jpg') }}"
+                                         class="img-fluid rounded-start card-like-pic" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <a href="{{ path('app_project_show', {'id': project.id} ) }}" class="card-like animate__animated animate__fadeInRight">
+                                        <h5 class="card-title">{{ project.title }}</h5>
+                                        </a>
+                                        <p class="card-text">
+                                            <small class="text-muted">{{ project.agency }}</small>
+                                        </p>
+                                        <p class="card-text">Industry : {{ project.topic }}</p>
+                                        <p class="card-text">{{ project.description }}</p>
+                                        <p class="card-text">
+                                            <small class="text-muted">
+                                                {% for techno in project.techno %}
+                                                    #{{ techno }}
+                                                {% endfor %}
+                                            </small>
+                                        </p>
+                                        {% if project.meeting %}
+                                        <p class="card-text">Meeting prévu le : {{ project.meeting }}</p>
+                                        {% else %}
+                                        <a href="{{ path('app_project_edit', {'id': project.id} ) }}"><p class="card-text">Plan a new meeting !</p></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {#</a>#}
+                {% else %}
+                    <p class="text-white">Rien à afficher... Allez liker quelques projets pour commencer !</p>
+                {% endfor %}
 
-    <a href="{{ path('app_project_new') }}">Create new</a>
+            </div>
+        </div>
+
+        {# completely useless but looks nice doesn't it #}
+        <nav class='mt-5' aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link"></a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">></a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
 {% endblock %}

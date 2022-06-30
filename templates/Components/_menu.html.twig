@@ -1,19 +1,25 @@
-<div id="mySidenav" class="sidenav">
-    <a id="closeBtn" href="#" class="close">×</a>
-    <ul>
-        <li>
-            <a href="{{ path('app_home_index') }}">Accueil</a>
-        </li>
-        <li>
-            <a href="{{ path('app_home_likes') }}">Mes likes</a>
-        </li>
-        <li>
-            <a href="#">Connexion</a>
-        </li>
-        <li>
-            <a href="#">Gérer mes projets</a>
-        </li>
-    </ul>
+<div id="mySidenav" class="sidenav d-flex flex-column justify-content-between">
+    <div>
+        <a id="closeBtn" href="#" class="close">×</a>
+        <ul>
+            <li>
+                <a href="{{ path('app_home_index') }}">Accueil</a>
+            </li>
+            <li>
+                <a href="{{ path('app_home_likes') }}">Mes likes</a>
+            </li>
+            <li>
+                {% if app.user %}
+                    <a href="{{ path('app_logout') }}"> Se déconnecter</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}"> Se connecter</a>
+                {% endif %}            </li>
+            <li>
+                <a href="{{ path ('app_project_index') }}">Gérer mes projets</a>
+            </li>
+        </ul>
+    </div>
+    <img class="logo-apside" src="{{ asset("build/images/logo.png") }}">
 </div>
 
 <a href="#" id="openBtn">
