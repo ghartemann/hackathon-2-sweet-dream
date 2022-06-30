@@ -5,62 +5,63 @@
 
 {% block body %}
 
-	<div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center">
 
-		<div class="card show-card-contained" style="width: 18rem;">
+        <div class="card show-card-contained" style="width: 18rem;">
 
-			<div class="card-body show-card-contained">
-				<img class="card-img-top" src="{{ asset('build/images/project.jpg') }}" alt="description image">
-				<h5 class="card-title mt-2">{{ project.title }}</h5>
-				<p class="card-text mt-2">{{ project.agency }}</p>
-				<p class="card-text mt-2">{{ project.description }}</p>
-				<p class="card-text mt-2">
-					<small class="text-muted">
-						{% for techno in project.techno %}
-							#{{ techno }}
-						{% endfor %}
-					</small>
-				</p>
-				<div class="d-flex justify-content-center">
-					<a href="{{ path('app_project_edit', {'id': project.id}) }}" class="btn btn-primary">Edit</a>
-				</div>
-			</div>
-		</div>
-	</div>
+            <img class="card-img-top" src="{{ asset('build/images/project.jpg') }}" alt="description image">
+            <div class="card-body show-card-contained">
+                <h5 class="card-title mt-2">{{ project.title }}</h5>
+                <p class="card-text mt-2">{{ project.agency }}</p>
+                <p class="card-text mt-2">{{ project.description }}</p>
+                <p class="card-text mt-2">
+                    <small class="text-muted">
+                        {% for techno in project.techno %}
+                            #{{ techno }}
+                        {% endfor %}
+                    </small>
+                </p>
+                <div class="d-flex justify-content-center">
+                    <a href="{{ path('app_project_edit', {'id': project.id}) }}" class="btn btn-primary">Edit</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div>
-		<h2 class="main-title text-center text-white mb-0 mt-5">Apsidians interested by your project:</h2>
-	</div>
+    <div>
+        <h2 class="main-title text-center text-white mb-5 mt-5">Apsidians interested by your project:</h2>
+    </div>
 
-	{% for user in users|slice(0,5) %}
-		<div class="d-flex justify-content-center">
-			<div class="card shadow mt-5" style="width: 537px;">
-				<div class="row g-0">
-					<div class="col-md-4">
-						<img src="https://i.pravatar.cc/{{ random(150, 200)}}" class="img-fluid rounded-start card-like-pic p-3" alt="profile picture">
-					</div>
-					<div class="col-md-8">
-						<div class="card-body">
-							<h5 class="card-title">{{ user.firstname }}
-								{{ user.lastname }}</h5>
-							<p class="card-text">
-								<small class="text-muted">{{ user.agency }}</small>
-							</p>
-							<p class="card-text">
-								<small class="text-muted">
-									{% for techno in project.techno %}
-										#{{ techno }}
-									{% endfor %}
-								</small>
-							</p>
-                            <p>{{ user.skills}}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	{% endfor %}
-	{% endfor %}
+    <div class="d-flex flex-column align-items-center gap-4 mb-5">
+        {% for user in users|slice(0,5) %}
+
+            <div class="card shadow" style="width: 537px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="https://i.pravatar.cc/{{ random(150, 200) }}"
+                             class="img-fluid rounded-start card-like-pic" alt="profile picture">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ user.firstname }}
+                                {{ user.lastname }}</h5>
+                            <p class="card-text">
+                                <small class="text-muted">{{ user.agency }}</small>
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    {% for techno in project.techno %}
+                                        #{{ techno }}
+                                    {% endfor %}
+                                </small>
+                            </p>
+                            <p>{{ user.skills }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
 
 {% endblock %}
