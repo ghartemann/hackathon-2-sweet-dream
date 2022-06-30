@@ -1,4 +1,3 @@
-
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -14,6 +13,7 @@ import 'bootstrap';
 import './scripts/menu.js';
 import 'hammerjs';
 import './scripts/match.js';
+import './scripts/test.js';
 
 // start the Stimulus application
 import './bootstrap';
