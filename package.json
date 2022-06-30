@@ -22,6 +22,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "animate.css": "^4.1.1"
+        "animate.css": "^4.1.1",
+        "hammerjs": "^2.0.8"
     }
 }
