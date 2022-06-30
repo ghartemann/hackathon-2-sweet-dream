@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\InterestRepository;
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,10 +12,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(ProjectRepository $projectRepository, InterestRepository $interestRepository): Response
     {
+        $interest = $interestRepository->findOneBy([
+            'likeStatus' => null,
+            'user' => $this->getUser(),
+        ]);
+
         return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+            'interest' => $interest
         ]);
     }
 
@@ -24,13 +30,5 @@ class HomeController extends AbstractController
         $projects = $projectRepository->findAll();
 
         return $this->render('home/likes.html.twig', ['projects' => $projects]);
-    }
-
-    #[Route('/match', name: 'match')]
-    public function matching(ProjectRepository $projectRepository): Response
-    {
-        $projects = $projectRepository->findAll();
-
-        return $this->render('home/match.html.twig', ['projects' => $projects]);
     }
 }
