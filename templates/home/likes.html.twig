@@ -15,7 +15,7 @@
             <div class="col-12 d-flex flex-column align-items-center gap-4">
 
                 {% for project in projects %}
-                    <a href="#" class="card-like animate__animated animate__fadeInRight">
+                    <a href="{{ path('app_project_show', {'id': project.id}) }}" class="card-like animate__animated animate__fadeInRight">
                         <div class="card shadow" style="max-width: 700px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
@@ -37,6 +37,11 @@
                                                 {% endfor %}
                                             </small>
                                         </p>
+                                        {% if project.meeting %}
+                                        <p class="card-text">Meeting prévu le : {{ project.meeting }}</p>
+                                        {% else %}
+                                        <p class="card-text">Meeting : Date à venir !</p>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
