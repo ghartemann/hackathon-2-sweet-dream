@@ -2,8 +2,23 @@
 
 {% block title %}{% endblock %}
 
-{# OLD VERSION #}
 {% block body %}
+
+    <div class="d-flex justify-content-center">
+        <div class="container" style="position: absolute;">
+            <div class="row p-4">
+                <div class="col-12">
+                    <a href="{{ path('app_home_index') }}">
+                        <h1 class="main-title text-center text-white mb-0">Apside Project</h1>
+                    </a>
+                    <a href="{{ path('app_home_index') }}">
+                        <h1 class="main-title-subtitle text-center text-white mt-0 fw-bolder animate__animated animate__bounceIn">
+                            finder</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     {% if app.user %}
 
@@ -49,7 +64,7 @@
         {% if not interests %}
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 d-flex flex-column justify-content-center" style="min-height: 100vh">
                         <h2 class="text-center pt-5 mt-5 text-white">Nothing to display... yet?</h2>
                     </div>
                 </div>
@@ -142,9 +157,9 @@
     {% else %}
         <div class="container">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 d-flex flex-column justify-content-center" style="min-height: 100vh">
                     <a href="{{ path("app_login") }}">
-                        <h2 class="text-center pt-5 mt-5 text-white">Please log in.</h2>
+                        <h2 class="text-center text-white">Please log in.</h2>
                     </a>
                 </div>
             </div>

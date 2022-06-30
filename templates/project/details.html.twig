@@ -1,10 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Project
-{% endblock %}
+{% block title %}{{ project.title }} -{% endblock %}
 
 {% block body %}
-
+    {{ parent() }}
     <div class="d-flex justify-content-center">
 
         <div class="card show-card-contained shadow" style="width: 18rem;">
