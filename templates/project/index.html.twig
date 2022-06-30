@@ -7,7 +7,7 @@
     <h1 class="text-center">My projects</h1>
         <div style="min-width: 400px; max-width: 400px;" class="mb-2 mt-4">
             <a href="{{ path('app_project_new') }}">
-                <p class="addProject text-center" style="min-width: 400px; max-width: 400px;">      +      </p>
+                <p class="addProject text-center" style="min-width: 400px; max-width: 400px;">Add a new project<br>+</p>
             </a>
         </div>
 
@@ -28,7 +28,7 @@
                                     <p class="card-text">
                                         <small class="text-muted">{{ project.agency }}</small>
                                     </p>
-                                    <p class="card-text">Field: {{ project.topic }}</p>
+                                    <p class="card-text">Field : {{ project.topic }}</p>
                                     <p class="card-text">{{ project.description }}</p>
                                     <p class="card-text">
                                         <small class="text-muted">
@@ -41,7 +41,7 @@
                                         <p class="card-text">Meeting scheduled: {{ project.meeting }}</p>
                                     {% else %}
                                         <a href="{{ path('app_project_edit', {'id': project.id} ) }}"><p
-                                                    class="card-text">Plan a new meeting !</p></a>
+                                                    class="card-text planMeeting">Plan a new meeting !</p></a>
                                     {% endif %}
 
                                 </div>
