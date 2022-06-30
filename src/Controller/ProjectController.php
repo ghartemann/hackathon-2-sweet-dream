@@ -49,9 +49,9 @@ class ProjectController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_project_show', methods: ['GET'])]
-    public function show(Project $project, InterestRepository $interestRepository): Response
+    public function show(Project $project, InterestRepository $interestRepository, int $id): Response
     {
-        $interests = $interestRepository->findInterestedUsers();
+        $interests = $interestRepository->findInterestedUsers($id);
         return $this->render('project/details.html.twig', [
             'project' => $project,
             'interests' => $interests
