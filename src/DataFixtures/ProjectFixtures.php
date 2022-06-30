@@ -15,19 +15,19 @@ class ProjectFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $project = new Project();
             $project->setTitle($faker->unique()->randomElement([
-                'Wonderful project',
-                'Webapp for an association',
-                'Geolocation',
-                'Great project',
+                'Awesome project',
+                'Webapp for a charity',
+                'Another awesome project',
                 'Webapp project',
+                'Please join this project',
                 'Secret project',
-                'Ecommerce website',
-                'PAwesome project',
+                'e-shopping website',
+                'Rad project',
                 'New project',
-                'Medical monitoring webapp',
+                'Medical monitoring app',
             ]))
                 ->setTopic($faker->randomElement(
-                    ['Bank', 'Insurance', 'Medical', 'aeronautics', 'Energies']
+                    ['Banking', 'Insurance', 'Medicine', 'Aeronautics', 'Energy']
                 ))
                 ->setAgency($faker->randomElement(
                     [
@@ -47,9 +47,16 @@ class ProjectFixtures extends Fixture
                         'NextJS',
                         'HTML',
                         'SCSS',
-                    ], rand(2, 5)
+                    ],
+                    rand(2, 5)
                 ))
-                ->setDescription($faker->text(100));
+                ->setDescription($faker->text(100))
+                ->setPicture($faker->randomElement([
+                    'build/images/project.jpg',
+                    'build/images/project2.jpg',
+                    'build/images/project3.jpg',
+                    'build/images/project4.jpg',
+                ]));
 
             $manager->persist($project);
         }

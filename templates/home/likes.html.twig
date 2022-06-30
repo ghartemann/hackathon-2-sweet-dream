@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
+{% block title %}Likes - {% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="row p-4">
             <div class="col-12">
-                <h2 class="text-center text-white">Mes likes</h2>
+                <h2 class="text-center text-white">Likes</h2>
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
                         <div class="card shadow" style="max-width: 700px;">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ asset('build/images/project.jpg') }}"
+                                    <img src="{{ asset(project.picture) }}"
                                          class="img-fluid rounded-start card-like-pic" alt="...">
                                 </div>
                                 <div class="col-md-8">
@@ -28,7 +28,7 @@
                                         <p class="card-text">
                                             <small class="text-muted">{{ project.agency }}</small>
                                         </p>
-                                        <p class="card-text">Secteur : {{ project.topic }}</p>
+                                        <p class="card-text">Field : {{ project.topic }}</p>
                                         <p class="card-text">{{ project.description }}</p>
                                         <p class="card-text">
                                             <small class="text-muted">
@@ -48,7 +48,7 @@
                         </div>
                     </a>
                 {% else %}
-                    <p class="text-white">Rien à afficher... Allez liker quelques projets pour commencer !</p>
+                    <p class="text-white">Nothing to display.</p>
                 {% endfor %}
 
             </div>
