@@ -14,14 +14,22 @@ class HomeController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(ProjectRepository $projectRepository, InterestRepository $interestRepository): Response
     {
-        $interest = $interestRepository->findOneBy([
+        $interests = $interestRepository->findBy([
             'likeStatus' => null,
-            'user' => $this->getUser(),
+            //'user' => $this->getUser(),
         ]);
 
         return $this->render('home/index.html.twig', [
-            'interest' => $interest
+            'interests' => $interests
         ]);
+    }
+
+    #[Route('/like/project', name: 'like_project')]
+    public function likeProject(InterestRepository $interestRepository): Response
+    {
+        $interest = $interestRepository->findOneBy([]);
+        $interest->setLikeStatus(true);
+        return $this->redirectToRoute('app_home_index');
     }
 
     #[Route('/likes', name: 'likes')]
