@@ -37,6 +37,11 @@
                                                 {% endfor %}
                                             </small>
                                         </p>
+                                        {% if project.meeting %}
+                                        <p class="card-text">Meeting prévu le : {{ project.meeting }}</p>
+                                        {% else %}
+                                        <p class="card-text">Meeting : Date à venir !</p>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>
