@@ -1,5 +1,4 @@
 {{ form_start(form) }}
-<<<<<<< HEAD
     {{ form_widget(form, {
         "attr": {
             "class": "text-white",}
@@ -8,49 +7,3 @@
     <button class="btn btn-secondary mt-3">{{ button_label|default('Save') }}</button>
 </div>
 {{ form_end(form) }}
-
-{# <div id="project-form" class="d-flex flex-column align-items-center m-5">
-        
-        <div class="form-row w-50">
-            <div class="form-group">
-            {{ form_row(form.title)}}
-            </div>
-        </div>
-        <div class="form-row w-50">
-            <div class="form-group">
-            {{ form_row(form.topic)}}
-            </div>
-        </div>
-        <div class="form-row w-50">
-            <div class="form-group">
-            {{ form_row(form.agency)}}
-            </div>
-        </div>
-        <div class="form-row w-50">
-            <div class="form-group">
-            {{ form_row(form.techno)}}
-            </div>
-        </div>
-        <div class="form-row w-50">
-            <div class="form-group">
-            {{ form_row(form.description)}}
-            </div>
-        </div>
-        <div class="form-row w-50">
-            <div class="form-group">
-            {{ form_row(form.meeting)}}
-            </div>
-        </div>
-        
-        
-{{ form_rest(form) }}
-        <div class="d-flex justify-content-center">
-            <input type="submit" class="btn btn-primary mt-4" value="Valider" />
-        </div>
-</div>
-{{ form_end(form) }} #}
-=======
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
->>>>>>> main
