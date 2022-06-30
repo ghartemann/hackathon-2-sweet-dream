@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Interest;
 use App\Repository\InterestRepository;
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +17,7 @@ class HomeController extends AbstractController
     {
         $interests = $interestRepository->findBy([
             'likeStatus' => null,
-            //'user' => $this->getUser(),
+            'user' => $this->getUser(),
         ]);
 
         return $this->render('home/index.html.twig', [
@@ -24,11 +25,19 @@ class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/like/project', name: 'like_project')]
-    public function likeProject(InterestRepository $interestRepository): Response
+    #[Route('/{id}/like/project', name: 'like_project')]
+    public function likeProject(Interest $interest, InterestRepository $interestRepository): Response
+    {
+        $interest->setLikeStatus(true);
+        $interestRepository->add($interest, true);
+        return $this->redirectToRoute('app_home_index');
+    }
+
+    #[Route('/dislike/project', name: 'dislike_project')]
+    public function dislikeProject(InterestRepository $interestRepository): Response
     {
         $interest = $interestRepository->findOneBy([]);
-        $interest->setLikeStatus(true);
+        $interest->setLikeStatus(false);
         return $this->redirectToRoute('app_home_index');
     }
 

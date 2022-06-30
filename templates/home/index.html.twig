@@ -26,8 +26,8 @@
                 <p class="card-text">{{ interest.project.topic }}</p>
                 <p class="card-text">{{ interest.project.description }}</p>
                 <p class="card-text"> {% for tech in interest.project.techno %}{{ tech }}{% endfor %}</p>
-                <a href="#" class="btn btn-danger" value="dislike">Dislike</a>
-                <a href="{{ path('app_home_like_project')}}" class="btn btn-primary" value="like">Like</a>
+                <a href="{{ path('app_home_dislike_project', {'id': interest.id}) }}" class="btn btn-danger" value="dislike">Dislike</a>
+                <a href="{{ path('app_home_like_project', {'id': interest.id}) }}" class="btn btn-primary" value="like">Like</a>
             </div>
         </div>
         {% endfor %}
