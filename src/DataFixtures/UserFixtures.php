@@ -52,6 +52,8 @@ class UserFixtures extends Fixture
             ));
             $user->setSkills($faker->sentence());
             $user->setPosition($faker->jobTitle());
+            $user->setRoles((array)'ROLE_USER');
+
 
             $user->setParticipant($faker->boolean());
             $user->setOrganizer($faker->boolean());
